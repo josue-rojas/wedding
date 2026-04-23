@@ -7,6 +7,17 @@ import './App.css'
 const INTRO_STORAGE_KEY = 'wedding_intro_played'
 const INTRO_DURATION_MS = 2200
 const HEART_COUNT = 34
+const HEART_RADIUS_MIN = 120
+const HEART_RADIUS_STEP = 29
+const HEART_RADIUS_VARIANCE = 220
+const HEART_DELAY_STEP = 0.035
+const HEART_DURATION_BASE = 1
+const HEART_DURATION_MULTIPLIER = 17
+const HEART_DURATION_VARIANCE = 12
+const HEART_DURATION_DIVISOR = 20
+const HEART_SIZE_MIN = 18
+const HEART_SIZE_MULTIPLIER = 7
+const HEART_SIZE_VARIANCE = 20
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,7 +33,8 @@ function App() {
     () =>
       Array.from({ length: HEART_COUNT }, (_, index) => {
         const angle = (index / HEART_COUNT) * Math.PI * 2
-        const radius = 120 + ((index * 29) % 220)
+        const radius =
+          HEART_RADIUS_MIN + ((index * HEART_RADIUS_STEP) % HEART_RADIUS_VARIANCE)
         const x = Math.cos(angle) * radius
         const y = Math.sin(angle) * radius
 
@@ -30,9 +42,15 @@ function App() {
           id: index,
           x,
           y,
-          delay: Number((index * 0.035).toFixed(2)),
-          duration: Number((1 + ((index * 17) % 12) / 20).toFixed(2)),
-          size: 18 + ((index * 7) % 20),
+          delay: Number((index * HEART_DELAY_STEP).toFixed(2)),
+          duration: Number(
+            (
+              HEART_DURATION_BASE +
+              ((index * HEART_DURATION_MULTIPLIER) % HEART_DURATION_VARIANCE) /
+                HEART_DURATION_DIVISOR
+            ).toFixed(2),
+          ),
+          size: HEART_SIZE_MIN + ((index * HEART_SIZE_MULTIPLIER) % HEART_SIZE_VARIANCE),
         }
       }),
     [],
