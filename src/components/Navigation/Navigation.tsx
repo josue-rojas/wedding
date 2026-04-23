@@ -26,7 +26,7 @@ export function Navigation({ items }: NavigationProps) {
           onClick={() => setIsOpen((value) => !value)}
           type="button"
         >
-          ☰
+          {isOpen ? '✕' : '☰'}
         </button>
         <nav className={`site-nav${isOpen ? ' is-open' : ''}`}>
           {items.map((item) => (
@@ -35,6 +35,7 @@ export function Navigation({ items }: NavigationProps) {
               className={({ isActive }) =>
                 `site-nav__link${isActive ? ' is-active' : ''}`
               }
+              end={item.to === '/'}
               onClick={() => setIsOpen(false)}
               to={item.to}
             >
