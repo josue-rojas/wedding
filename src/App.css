@@ -1,3 +1,58 @@
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, var(--bg) 60%);
+  overflow: hidden;
+  animation: intro-fade-out 0.35s ease 1.85s forwards;
+}
+
+.intro-heart {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--size);
+  height: var(--size);
+  margin-left: calc(var(--size) / -2);
+  margin-top: calc(var(--size) / -2);
+  font-size: var(--size);
+  line-height: 1;
+  color: #f05284;
+  opacity: 0;
+  transform: translate(0, 0) scale(0.35) rotate(0deg);
+  animation: heart-burst var(--duration) cubic-bezier(0.2, 0.85, 0.2, 1) var(--delay)
+    forwards;
+}
+
+@keyframes heart-burst {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.2) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(1.1) rotate(16deg);
+  }
+}
+
+@keyframes intro-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
