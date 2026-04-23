@@ -52,9 +52,7 @@ function App() {
     const timeoutId = window.setTimeout(() => setShowIntro(false), INTRO_DURATION_MS)
 
     return () => {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId)
-      }
+      window.clearTimeout(timeoutId)
     }
   }, [showIntro])
 
