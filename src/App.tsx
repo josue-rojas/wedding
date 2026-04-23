@@ -19,6 +19,8 @@ const HEART_SIZE_MIN = 18
 const HEART_SIZE_MULTIPLIER = 7
 const HEART_SIZE_VARIANCE = 20
 
+const roundToHundredths = (value: number) => Math.round(value * 100) / 100
+
 function App() {
   const [count, setCount] = useState(0)
   const [showIntro, setShowIntro] = useState(() => {
@@ -31,7 +33,7 @@ function App() {
 
   const introHearts = useMemo(
     () =>
-      Array.from({ length: HEART_COUNT }, (_, index) => {
+      Array.from({ length: HEART_COUNT }, (_, index) => index).map((index) => {
         const angle = (index / HEART_COUNT) * Math.PI * 2
         const radius =
           HEART_RADIUS_MIN + ((index * HEART_RADIUS_STEP) % HEART_RADIUS_VARIANCE)
@@ -42,13 +44,11 @@ function App() {
           id: index,
           x,
           y,
-          delay: Number((index * HEART_DELAY_STEP).toFixed(2)),
-          duration: Number(
-            (
-              HEART_DURATION_BASE +
+          delay: roundToHundredths(index * HEART_DELAY_STEP),
+          duration: roundToHundredths(
+            HEART_DURATION_BASE +
               ((index * HEART_DURATION_MULTIPLIER) % HEART_DURATION_VARIANCE) /
-                HEART_DURATION_DIVISOR
-            ).toFixed(2),
+                HEART_DURATION_DIVISOR,
           ),
           size: HEART_SIZE_MIN + ((index * HEART_SIZE_MULTIPLIER) % HEART_SIZE_VARIANCE),
         }
