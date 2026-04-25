@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import heroImg from '../assets/wedding.jpg'
 import styles from './styles.module.css'
 
-const WEDDING_DATE = new Date('2027-06-12T16:00:00')
+const WEDDING_DATE = new Date('2027-12-30T16:00:00')
 
 interface CountdownParts {
   days: number
@@ -58,8 +58,7 @@ export function HomePage() {
 
       <section className={styles.homeContent}>
         <p>
-          We are so excited to celebrate with you. Please explore our story,
-          details, and RSVP information.
+          We are so excited to celebrate with you.
         </p>
         {countdown.done ? (
           <p className={styles.countdownDone} aria-live="polite">
