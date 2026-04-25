@@ -1,108 +1,105 @@
-import { useState } from 'react'
-import { Button } from '../components/Button/Button'
-import { Card } from '../components/Card/Card'
-import { FormField } from '../components/FormField/FormField'
-import { PageLayout } from '../components/PageLayout/PageLayout'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import heroImg from '../assets/hero.png'
+import weddingImg from '../assets/wedding.jpg'
+
+const SLIDES = [weddingImg, heroImg]
 
 export function RSVPPage() {
-  const [attending, setAttending] = useState('yes')
-  const [submitted, setSubmitted] = useState(false)
+  const [current, setCurrent] = useState(0)
 
-  const [form, setForm] = useState({
-    name: '',
-    guestCount: '1',
-    meal: 'chicken',
-    plusOne: '',
-    dietary: '',
-  })
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setSubmitted(true)
-  }
-
-  const handleChange = (field: keyof typeof form, value: string) => {
-    setForm((current) => ({ ...current, [field]: value }))
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % SLIDES.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
-    <PageLayout
-      title="RSVP"
-      intro="Please let us know if you can make it."
-    >
-      <Card title="RSVP Form">
-        {submitted ? (
-          <p className="confirmation-message" role="status">
-            Thanks, {form.name || 'friend'}! Your RSVP has been submitted.
-          </p>
-        ) : (
-          <form className="form" onSubmit={handleSubmit}>
-            <FormField
-              id="rsvp-name"
-              label="Your name"
-              value={form.name}
-              onChange={(event) => handleChange('name', event.target.value)}
-              required
-            />
-            <div className="form-field">
-              <label htmlFor="rsvp-attending">Will you attend?</label>
-              <select
-                id="rsvp-attending"
-                value={attending}
-                onChange={(event) => setAttending(event.target.value)}
-              >
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+    <main className="rsvp-layout">
+      {/* ── Form panel (left) ── */}
+      <div className="rsvp-form-panel">
+        <div className="rsvp-form-inner">
+          <h1 className="rsvp-title">RSVP</h1>
+
+          <div className="rsvp-divider" aria-hidden="true">
+            <span className="rsvp-divider__line" />
+            <svg className="rsvp-divider__rings" viewBox="0 0 44 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="11" r="8" stroke="#9aaa7a" strokeWidth="1.2" />
+              <circle cx="30" cy="11" r="8" stroke="#9aaa7a" strokeWidth="1.2" />
+            </svg>
+            <span className="rsvp-divider__line" />
+          </div>
+
+          <p className="rsvp-subtitle">Save the Date and RSVP</p>
+          <p className="rsvp-date">December 30, 2027</p>
+
+          <div className="rsvp-action-row">
+            <Link className="rsvp-details-btn" to="/details">Details</Link>
+          </div>
+
+          <form className="rsvp-form" onSubmit={(e) => e.preventDefault()}>
+            <div className="rsvp-field">
+              <input
+                className="rsvp-input"
+                type="text"
+                placeholder="Full Name"
+                aria-label="Full name"
+              />
             </div>
-            {attending === 'yes' ? (
-              <>
-                <FormField
-                  as="select"
-                  id="rsvp-guests"
-                  label="Guest count"
-                  value={form.guestCount}
-                  onChange={(event) => handleChange('guestCount', event.target.value)}
-                  options={[
-                    { label: '1', value: '1' },
-                    { label: '2', value: '2' },
-                    { label: '3', value: '3' },
-                    { label: '4', value: '4' },
-                  ]}
+            <div className="rsvp-field">
+              <input
+                className="rsvp-input"
+                type="email"
+                placeholder="Email Address"
+                aria-label="Email address"
+              />
+            </div>
+            <div className="rsvp-field-row">
+              <div className="rsvp-field">
+                <input
+                  className="rsvp-input"
+                  type="number"
+                  min="1"
+                  placeholder="# of Guests"
+                  aria-label="Number of guests"
                 />
-                <FormField
-                  as="select"
-                  id="rsvp-meal"
-                  label="Meal preference"
-                  value={form.meal}
-                  onChange={(event) => handleChange('meal', event.target.value)}
-                  options={[
-                    { label: 'Chicken', value: 'chicken' },
-                    { label: 'Salmon', value: 'salmon' },
-                    { label: 'Vegetarian', value: 'vegetarian' },
-                  ]}
+              </div>
+              <div className="rsvp-field">
+                <input
+                  className="rsvp-input"
+                  type="text"
+                  placeholder="Suggest a Song"
+                  aria-label="Suggest a song"
                 />
-                <FormField
-                  id="rsvp-plus-one"
-                  label="Plus-one name"
-                  value={form.plusOne}
-                  onChange={(event) => handleChange('plusOne', event.target.value)}
-                  placeholder="Optional"
-                />
-                <FormField
-                  as="textarea"
-                  id="rsvp-dietary"
-                  label="Dietary restrictions"
-                  value={form.dietary}
-                  onChange={(event) => handleChange('dietary', event.target.value)}
-                  rows={3}
-                />
-              </>
-            ) : null}
-            <Button type="submit">Submit RSVP</Button>
+              </div>
+            </div>
+            <button className="rsvp-submit-btn" type="submit">Send RSVP</button>
           </form>
-        )}
-      </Card>
-    </PageLayout>
+        </div>
+      </div>
+
+      {/* ── Slideshow panel (right) ── */}
+      <div className="rsvp-slideshow-panel" aria-hidden="true">
+        {SLIDES.map((src, i) => (
+          <img
+            key={src}
+            className={`rsvp-slide${i === current ? ' rsvp-slide--active' : ''}`}
+            src={src}
+            alt=""
+          />
+        ))}
+        <div className="rsvp-dots">
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              className={`rsvp-dot${i === current ? ' rsvp-dot--active' : ''}`}
+              onClick={() => setCurrent(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </main>
   )
 }
