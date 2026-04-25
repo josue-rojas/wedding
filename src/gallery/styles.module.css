@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.galleryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.placeholderTile {
+  min-height: 130px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #faf7f3, #f0ebe3);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  padding: 1rem;
+}

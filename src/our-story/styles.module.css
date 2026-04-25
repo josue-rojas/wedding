@@ -1,0 +1,46 @@
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.timeline li {
+  display: grid;
+  gap: 0.2rem;
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--botanical);
+}
+
+.timeline li strong {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--heading);
+  font-size: 1.05rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.galleryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.placeholderTile {
+  min-height: 130px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #faf7f3, #f0ebe3);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  padding: 1rem;
+}

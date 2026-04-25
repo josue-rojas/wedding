@@ -1,5 +1,6 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
+import styles from './App.module.css'
 import { Navigation, type NavigationItem } from './components/Navigation/Navigation'
 import { DetailsPage } from './details/Details.page'
 import { FAQPage } from './faq/FAQ.page'
@@ -22,7 +23,7 @@ const navItems: NavigationItem[] = [
 function App() {
   return (
     <HashRouter>
-      <div className="app-shell">
+      <div className={styles.appShell}>
         <Navigation items={navItems} />
         <Routes>
           <Route path="/" element={<HomePage />} />

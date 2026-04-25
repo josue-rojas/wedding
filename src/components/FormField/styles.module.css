@@ -1,0 +1,38 @@
+.formField {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.formField label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.formField input,
+.formField select,
+.formField textarea {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.65rem 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--surface);
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.formField input:focus,
+.formField select:focus,
+.formField textarea:focus {
+  border-color: var(--accent);
+}
+
+.formField textarea {
+  resize: vertical;
+}

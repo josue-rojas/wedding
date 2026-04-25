@@ -1,0 +1,18 @@
+.form {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 480px;
+}
+
+.formField {
+  composes: formField from '../components/FormField/styles.module.css';
+}
+
+.confirmationMessage {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--heading);
+  font-weight: 400;
+}

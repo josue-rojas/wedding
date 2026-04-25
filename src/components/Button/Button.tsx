@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, PropsWithChildren } from 'react'
+import styles from './styles.module.css'
 
 type ButtonVariant = 'primary' | 'secondary'
 
@@ -13,10 +14,12 @@ export function Button({
   type = 'button',
   ...props
 }: ButtonProps) {
+  const variantClass = variant === 'primary' ? styles.primary : styles.secondary
+
   return (
     <button
       type={type}
-      className={`button button--${variant}${className ? ` ${className}` : ''}`}
+      className={[styles.button, variantClass, className].filter(Boolean).join(' ')}
       {...props}
     >
       {children}

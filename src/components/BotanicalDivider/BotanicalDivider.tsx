@@ -1,8 +1,10 @@
+import styles from './styles.module.css'
+
 export function BotanicalDivider() {
   return (
     <svg
       aria-hidden="true"
-      className="botanical-divider"
+      className={styles.botanicalDivider}
       fill="none"
       viewBox="0 0 200 56"
       xmlns="http://www.w3.org/2000/svg"

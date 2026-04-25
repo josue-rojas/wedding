@@ -3,6 +3,7 @@ import { Button } from '../components/Button/Button'
 import { Card } from '../components/Card/Card'
 import { FormField } from '../components/FormField/FormField'
 import { PageLayout } from '../components/PageLayout/PageLayout'
+import styles from './styles.module.css'
 
 export function RSVPPage() {
   const [attending, setAttending] = useState('yes')
@@ -32,11 +33,11 @@ export function RSVPPage() {
     >
       <Card title="RSVP Form">
         {submitted ? (
-          <p className="confirmation-message" role="status">
+          <p className={styles.confirmationMessage} role="status">
             Thanks, {form.name || 'friend'}! Your RSVP has been submitted.
           </p>
         ) : (
-          <form className="form" onSubmit={handleSubmit}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <FormField
               id="rsvp-name"
               label="Your name"
@@ -44,7 +45,7 @@ export function RSVPPage() {
               onChange={(event) => handleChange('name', event.target.value)}
               required
             />
-            <div className="form-field">
+            <div className={styles.formField}>
               <label htmlFor="rsvp-attending">Will you attend?</label>
               <select
                 id="rsvp-attending"
