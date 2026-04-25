@@ -32,3 +32,18 @@
 .secondary:hover {
   background: var(--surface-hover);
 }
+
+.outline {
+  background: transparent;
+  color: var(--heading);
+  border-color: var(--heading);
+}
+
+.outline:hover {
+  background: var(--surface-hover);
+}
+
+.fullWidth {
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,30 @@
+.underlineInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 0.45rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  outline: none;
+  transition: border-color 0.2s ease;
+  -moz-appearance: textfield;
+}
+
+.underlineInput::-webkit-outer-spin-button,
+.underlineInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.underlineInput::placeholder {
+  color: var(--muted);
+}
+
+.underlineInput:focus {
+  border-color: var(--heading);
+  color: var(--heading);
+}
