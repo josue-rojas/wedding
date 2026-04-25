@@ -14,7 +14,6 @@ const navItems: NavigationItem[] = [
   { label: 'Home', to: '/' },
   { label: 'Our Story', to: '/our-story' },
   { label: 'Details', to: '/details' },
-  { label: 'RSVP', to: '/rsvp' },
   { label: 'Registry', to: '/registry' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Gallery', to: '/gallery' },
