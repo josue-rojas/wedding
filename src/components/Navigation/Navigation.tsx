@@ -16,9 +16,6 @@ export function Navigation({ items }: NavigationProps) {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <NavLink className="site-title" to="/">
-          Josue &amp; Partner
-        </NavLink>
         <button
           aria-expanded={isOpen}
           aria-label="Toggle menu"

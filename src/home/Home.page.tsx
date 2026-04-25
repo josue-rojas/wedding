@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Card } from '../components/Card/Card'
-import { PageLayout } from '../components/PageLayout/PageLayout'
+import heroImg from '../assets/wedding.jpg'
 
 const WEDDING_DATE = new Date('2027-06-12T16:00:00')
 
@@ -17,11 +16,23 @@ function getCountdown() {
 
 export function HomePage() {
   return (
-    <PageLayout
-      title="Josue & Partner"
-      intro="June 12, 2027 • Austin, Texas"
-    >
-      <Card title="Welcome">
+    <main>
+      <section className="hero">
+        <h1 className="hero__names">Josue &amp; Irene</h1>
+        <div className="hero__image-wrap">
+          <img
+            className="hero__image"
+            src={heroImg}
+            alt="Josue and Irene"
+          />
+        </div>
+        <div className="hero__meta">
+          <span className="hero__meta-item">December 30, 2027</span>
+          <span className="hero__meta-item">The Bronx, New York</span>
+        </div>
+      </section>
+
+      <section className="home-content">
         <p>
           We are so excited to celebrate with you. Please explore our story,
           details, and RSVP information.
@@ -37,7 +48,7 @@ export function HomePage() {
             Our Story
           </Link>
         </div>
-      </Card>
-    </PageLayout>
+      </section>
+    </main>
   )
 }
