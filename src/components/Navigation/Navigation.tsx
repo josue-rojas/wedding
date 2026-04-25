@@ -16,17 +16,12 @@ export function Navigation({ items }: NavigationProps) {
 
   return (
     <header className={styles.siteHeader}>
-      <div className={styles.siteHeaderInner}>
-        <button
-          aria-expanded={isOpen}
-          aria-label="Toggle menu"
-          className={styles.menuButton}
-          onClick={() => setIsOpen((value) => !value)}
-          type="button"
-        >
-          {isOpen ? '✕' : '☰'}
-        </button>
-        <nav className={`${styles.siteNav}${isOpen ? ` ${styles.isOpen}` : ''}`}>
+      <div className={`${styles.siteHeaderInner}${isOpen ? ` ${styles.isOpen}` : ''}`}>
+        <NavLink className={styles.navBrand} end to="/" onClick={() => setIsOpen(false)}>
+          J+I
+        </NavLink>
+
+        <nav className={`${styles.siteNav}${isOpen ? ` ${styles.navOpen}` : ''}`}>
           {items.map((item) => (
             <NavLink
               key={item.to}
@@ -41,6 +36,26 @@ export function Navigation({ items }: NavigationProps) {
             </NavLink>
           ))}
         </nav>
+
+        <NavLink
+          className={({ isActive }) =>
+            `${styles.navCta}${isActive ? ` ${styles.navCtaActive}` : ''}`
+          }
+          to="/rsvp"
+          onClick={() => setIsOpen(false)}
+        >
+          RSVP
+        </NavLink>
+
+        <button
+          aria-expanded={isOpen}
+          aria-label="Toggle menu"
+          className={styles.menuButton}
+          onClick={() => setIsOpen((value) => !value)}
+          type="button"
+        >
+          {isOpen ? '✕' : '☰'}
+        </button>
       </div>
     </header>
   )
