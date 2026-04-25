@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import heroImg from '../assets/hero.png'
+import heroImg from '../assets/wedding.jpg'
 
 const WEDDING_DATE = new Date('2027-06-12T16:00:00')
 
@@ -18,17 +18,17 @@ export function HomePage() {
   return (
     <main>
       <section className="hero">
-        <h1 className="hero__names">Josue &amp; Partner</h1>
+        <h1 className="hero__names">Josue &amp; Irene</h1>
         <div className="hero__image-wrap">
           <img
             className="hero__image"
             src={heroImg}
-            alt="Josue and Partner"
+            alt="Josue and Irene"
           />
         </div>
         <div className="hero__meta">
-          <span className="hero__meta-item">June 12, 2027</span>
-          <span className="hero__meta-item">Austin, Texas</span>
+          <span className="hero__meta-item">December 30, 2027</span>
+          <span className="hero__meta-item">The Bronx, New York</span>
         </div>
       </section>
 

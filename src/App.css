@@ -41,7 +41,7 @@ a {
 
 /* ── Header / Navigation ── */
 .site-header {
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 20;
   background: rgba(250, 247, 243, 0.97);
@@ -407,7 +407,7 @@ a {
   font-size: clamp(3.5rem, 12vw, 10rem);
   font-weight: 300;
   font-style: normal;
-  color: var(--heading);
+  color: var(--accent);
   margin: 0;
   line-height: 1;
   text-align: center;
