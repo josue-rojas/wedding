@@ -37,6 +37,8 @@ a {
 
 .app-shell {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── Header / Navigation ── */
@@ -243,6 +245,21 @@ a {
 
 .button--secondary:hover {
   background: var(--surface-hover);
+}
+
+.button--outline {
+  background: transparent;
+  color: var(--heading);
+  border-color: var(--heading);
+}
+
+.button--outline:hover {
+  background: var(--surface-hover);
+}
+
+.button--full-width {
+  display: block;
+  width: 100%;
 }
 
 /* ── Countdown ── */
@@ -461,6 +478,174 @@ a {
   color: var(--text);
 }
 
+/* ── RingsDivider ── */
+.rings-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.6rem;
+}
+
+.rings-divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.rings-divider__svg {
+  width: 38px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ── UnderlineInput ── */
+.underline-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 0.45rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  outline: none;
+  transition: border-color 0.2s ease;
+  -moz-appearance: textfield;
+}
+
+.underline-input::-webkit-outer-spin-button,
+.underline-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.underline-input::placeholder {
+  color: var(--muted);
+}
+
+.underline-input:focus {
+  border-color: var(--heading);
+  color: var(--heading);
+}
+
+/* ── Slideshow ── */
+.slideshow {
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.slideshow__slide--active {
+  opacity: 1;
+}
+
+.slideshow__dots {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.45rem;
+}
+
+.slideshow__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.slideshow__dot--active {
+  background: #ffffff;
+}
+
+/* ── RSVP split-screen layout ── */
+.rsvp-layout {
+  flex: 1;
+  display: flex;
+  min-height: 600px;
+}
+
+.rsvp-form-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 2.5rem;
+  background: var(--surface);
+}
+
+.rsvp-form-inner {
+  width: min(400px, 100%);
+  text-align: center;
+}
+
+.rsvp-title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--heading);
+  margin: 0 0 1.5rem;
+}
+
+.rsvp-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.7rem;
+}
+
+.rsvp-date {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--heading);
+  margin: 0 0 1.8rem;
+  line-height: 1.2;
+}
+
+.rsvp-action-row {
+  margin-bottom: 2.2rem;
+}
+
+.rsvp-form {
+  display: grid;
+  gap: 1.6rem;
+  text-align: left;
+}
+
+.rsvp-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* .rsvp-slideshow-panel inherits Slideshow styles; flex sizing set here */
+.rsvp-slideshow-panel {
+  flex: 1;
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .menu-button {
@@ -495,6 +680,14 @@ a {
 
   .page-layout {
     padding: 2.5rem 0 3.5rem;
+  }
+
+  .rsvp-slideshow-panel {
+    display: none;
+  }
+
+  .rsvp-form-panel {
+    padding: 2.5rem 1.5rem;
   }
 }
 
