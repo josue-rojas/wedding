@@ -18,7 +18,7 @@ export function Navigation({ items }: NavigationProps) {
     <header className={styles.siteHeader}>
       <div className={`${styles.siteHeaderInner}${isOpen ? ` ${styles.isOpen}` : ''}`}>
         <NavLink className={styles.navBrand} end to="/" onClick={() => setIsOpen(false)}>
-          J+I
+          I+J
         </NavLink>
 
         <nav className={`${styles.siteNav}${isOpen ? ` ${styles.isOpen}` : ''}`}>

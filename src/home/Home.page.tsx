@@ -19,12 +19,12 @@ export function HomePage() {
   return (
     <main>
       <section className={styles.hero}>
-        <h1 className={styles.heroNames}>Josue &amp; Irene</h1>
+        <h1 className={styles.heroNames}>Irene &amp; Josue</h1>
         <div className={styles.heroImageWrap}>
           <img
             className={styles.heroImage}
             src={heroImg}
-            alt="Josue and Irene"
+            alt="Irene and Josue"
           />
         </div>
         <div className={styles.heroMeta}>
