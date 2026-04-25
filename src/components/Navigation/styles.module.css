@@ -137,7 +137,7 @@
     order: 10;
   }
 
-  .siteNav.navOpen {
+  .siteNav.isOpen {
     display: flex;
   }
 

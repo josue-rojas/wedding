@@ -21,7 +21,7 @@ export function Navigation({ items }: NavigationProps) {
           J+I
         </NavLink>
 
-        <nav className={`${styles.siteNav}${isOpen ? ` ${styles.navOpen}` : ''}`}>
+        <nav className={`${styles.siteNav}${isOpen ? ` ${styles.isOpen}` : ''}`}>
           {items.map((item) => (
             <NavLink
               key={item.to}
