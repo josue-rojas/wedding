@@ -80,19 +80,21 @@ export function RSVPPage() {
       </div>
 
       {/* ── Slideshow panel (right) ── */}
-      <div className="rsvp-slideshow-panel" aria-hidden="true">
+      <div className="rsvp-slideshow-panel">
         {SLIDES.map((src, i) => (
           <img
             key={src}
             className={`rsvp-slide${i === current ? ' rsvp-slide--active' : ''}`}
             src={src}
             alt=""
+            aria-hidden="true"
           />
         ))}
         <div className="rsvp-dots">
           {SLIDES.map((_, i) => (
             <button
               key={i}
+              type="button"
               className={`rsvp-dot${i === current ? ' rsvp-dot--active' : ''}`}
               onClick={() => setCurrent(i)}
               aria-label={`Go to slide ${i + 1}`}
