@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import heroImg from '../assets/wedding.jpg'
+import styles from './styles.module.css'
 
 const WEDDING_DATE = new Date('2027-06-12T16:00:00')
 
@@ -17,34 +18,34 @@ function getCountdown() {
 export function HomePage() {
   return (
     <main>
-      <section className="hero">
-        <h1 className="hero__names">Josue &amp; Irene</h1>
-        <div className="hero__image-wrap">
+      <section className={styles.hero}>
+        <h1 className={styles.heroNames}>Josue &amp; Irene</h1>
+        <div className={styles.heroImageWrap}>
           <img
-            className="hero__image"
+            className={styles.heroImage}
             src={heroImg}
             alt="Josue and Irene"
           />
         </div>
-        <div className="hero__meta">
-          <span className="hero__meta-item">December 30, 2027</span>
-          <span className="hero__meta-item">The Bronx, New York</span>
+        <div className={styles.heroMeta}>
+          <span>December 30, 2027</span>
+          <span>The Bronx, New York</span>
         </div>
       </section>
 
-      <section className="home-content">
+      <section className={styles.homeContent}>
         <p>
           We are so excited to celebrate with you. Please explore our story,
           details, and RSVP information.
         </p>
-        <p className="countdown" aria-live="polite">
+        <p className={styles.countdown} aria-live="polite">
           {getCountdown()}
         </p>
-        <div className="button-row">
-          <Link className="button button--primary" to="/rsvp">
+        <div className={styles.buttonRow}>
+          <Link className={styles.buttonLinkPrimary} to="/rsvp">
             RSVP
           </Link>
-          <Link className="button button--secondary" to="/our-story">
+          <Link className={styles.buttonLinkSecondary} to="/our-story">
             Our Story
           </Link>
         </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import styles from './styles.module.css'
 
 export type NavigationItem = {
   label: string
@@ -14,23 +15,23 @@ export function Navigation({ items }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="site-header">
-      <div className="site-header__inner">
+    <header className={styles.siteHeader}>
+      <div className={styles.siteHeaderInner}>
         <button
           aria-expanded={isOpen}
           aria-label="Toggle menu"
-          className="menu-button"
+          className={styles.menuButton}
           onClick={() => setIsOpen((value) => !value)}
           type="button"
         >
           {isOpen ? '✕' : '☰'}
         </button>
-        <nav className={`site-nav${isOpen ? ' is-open' : ''}`}>
+        <nav className={`${styles.siteNav}${isOpen ? ` ${styles.isOpen}` : ''}`}>
           {items.map((item) => (
             <NavLink
               key={item.to}
               className={({ isActive }) =>
-                `site-nav__link${isActive ? ' is-active' : ''}`
+                `${styles.siteNavLink}${isActive ? ` ${styles.isActive}` : ''}`
               }
               end={item.to === '/'}
               onClick={() => setIsOpen(false)}

@@ -1,5 +1,6 @@
 import { Card } from '../components/Card/Card'
 import { PageLayout } from '../components/PageLayout/PageLayout'
+import styles from './styles.module.css'
 
 const timeline = [
   { year: '2018', event: 'Met through mutual friends and shared tacos.' },
@@ -14,7 +15,7 @@ export function OurStoryPage() {
       intro="A few moments from our journey together."
     >
       <Card title="Timeline">
-        <ul className="timeline">
+        <ul className={styles.timeline}>
           {timeline.map((item) => (
             <li key={item.year}>
               <strong>{item.year}</strong>
@@ -24,10 +25,10 @@ export function OurStoryPage() {
         </ul>
       </Card>
       <Card title="Engagement Photos" subtitle="Placeholder gallery">
-        <div className="grid gallery-grid">
-          <div className="placeholder-tile">Mountain overlook</div>
-          <div className="placeholder-tile">Downtown walk</div>
-          <div className="placeholder-tile">Sunset picnic</div>
+        <div className={`${styles.grid} ${styles.galleryGrid}`}>
+          <div className={styles.placeholderTile}>Mountain overlook</div>
+          <div className={styles.placeholderTile}>Downtown walk</div>
+          <div className={styles.placeholderTile}>Sunset picnic</div>
         </div>
       </Card>
     </PageLayout>

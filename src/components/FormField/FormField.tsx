@@ -1,4 +1,5 @@
 import type { InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes } from 'react'
+import styles from './styles.module.css'
 
 type BaseProps = {
   id: string
@@ -35,7 +36,7 @@ export function FormField(props: FormFieldProps) {
   const { id, label } = props
 
   return (
-    <div className="form-field">
+    <div className={styles.formField}>
       <label htmlFor={id}>{label}</label>
       {props.as === 'select' ? (
         <select id={id} {...omitProps(props, ['as', 'id', 'label', 'options'])}>

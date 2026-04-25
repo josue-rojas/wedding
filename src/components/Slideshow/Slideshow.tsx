@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import styles from './styles.module.css'
 
 type SlideshowProps = {
   slides: string[]
@@ -18,23 +19,23 @@ export function Slideshow({ slides, interval = 4500, className }: SlideshowProps
   }, [slides.length, interval])
 
   return (
-    <div className={`slideshow${className ? ` ${className}` : ''}`}>
+    <div className={[styles.slideshow, className].filter(Boolean).join(' ')}>
       {slides.map((src, i) => (
         <img
           key={`${i}-${src}`}
-          className={`slideshow__slide${i === current ? ' slideshow__slide--active' : ''}`}
+          className={`${styles.slide}${i === current ? ` ${styles.slideActive}` : ''}`}
           src={src}
           alt=""
           aria-hidden="true"
         />
       ))}
       {slides.length > 1 && (
-        <div className="slideshow__dots">
+        <div className={styles.dots}>
           {slides.map((_, i) => (
             <button
               key={i}
               type="button"
-              className={`slideshow__dot${i === current ? ' slideshow__dot--active' : ''}`}
+              className={`${styles.dot}${i === current ? ` ${styles.dotActive}` : ''}`}
               onClick={() => setCurrent(i)}
               aria-label={`Go to slide ${i + 1}`}
             />

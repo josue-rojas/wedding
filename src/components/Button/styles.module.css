@@ -1,0 +1,49 @@
+.button {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 0.6rem 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary:hover {
+  background: var(--accent-dark);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--heading);
+  border-color: var(--border);
+}
+
+.secondary:hover {
+  background: var(--surface-hover);
+}
+
+.outline {
+  background: transparent;
+  color: var(--heading);
+  border-color: var(--heading);
+}
+
+.outline:hover {
+  background: var(--surface-hover);
+}
+
+.fullWidth {
+  display: block;
+  width: 100%;
+}

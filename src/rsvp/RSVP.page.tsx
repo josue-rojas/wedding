@@ -5,27 +5,28 @@ import { Button } from '../components/Button/Button'
 import { RingsDivider } from '../components/RingsDivider/RingsDivider'
 import { Slideshow } from '../components/Slideshow/Slideshow'
 import { UnderlineInput } from '../components/UnderlineInput/UnderlineInput'
+import styles from './styles.module.css'
 
 const SLIDES = [weddingImg, heroImg]
 
 export function RSVPPage() {
   return (
-    <main className="rsvp-layout">
+    <main className={styles.rsvpLayout}>
       {/* ── Form panel (left) ── */}
-      <div className="rsvp-form-panel">
-        <div className="rsvp-form-inner">
-          <h1 className="rsvp-title">RSVP</h1>
+      <div className={styles.rsvpFormPanel}>
+        <div className={styles.rsvpFormInner}>
+          <h1 className={styles.rsvpTitle}>RSVP</h1>
 
           <RingsDivider />
 
-          <p className="rsvp-subtitle">Save the Date and RSVP</p>
-          <p className="rsvp-date">December 30, 2027</p>
+          <p className={styles.rsvpSubtitle}>Save the Date and RSVP</p>
+          <p className={styles.rsvpDate}>December 30, 2027</p>
 
-          <div className="rsvp-action-row">
-            <Link className="button button--outline" to="/details">Details</Link>
+          <div className={styles.rsvpActionRow}>
+            <Link className={styles.detailsLink} to="/details">Details</Link>
           </div>
 
-          <form className="rsvp-form" onSubmit={(e) => e.preventDefault()}>
+          <form className={styles.rsvpForm} onSubmit={(e) => e.preventDefault()}>
             <UnderlineInput
               type="text"
               placeholder="Full Name"
@@ -36,7 +37,7 @@ export function RSVPPage() {
               placeholder="Email Address"
               aria-label="Email address"
             />
-            <div className="rsvp-field-row">
+            <div className={styles.rsvpFieldRow}>
               <UnderlineInput
                 type="number"
                 min="1"
@@ -55,7 +56,8 @@ export function RSVPPage() {
       </div>
 
       {/* ── Slideshow panel (right) ── */}
-      <Slideshow slides={SLIDES} className="rsvp-slideshow-panel" />
+      <Slideshow slides={SLIDES} className={styles.rsvpSlideshowPanel} />
     </main>
   )
 }
+
