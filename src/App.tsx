@@ -1,7 +1,6 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Navigation, type NavigationItem } from './components/Navigation/Navigation'
-import { ContactPage } from './contact/Contact.page'
 import { DetailsPage } from './details/Details.page'
 import { FAQPage } from './faq/FAQ.page'
 import { GalleryPage } from './gallery/Gallery.page'
@@ -18,7 +17,6 @@ const navItems: NavigationItem[] = [
   { label: 'Registry', to: '/registry' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Gallery', to: '/gallery' },
-  { label: 'Contact', to: '/contact' },
 ]
 
 function App() {
@@ -36,7 +34,6 @@ function App() {
           <Route path="/registry" element={<RegistryPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </div>
