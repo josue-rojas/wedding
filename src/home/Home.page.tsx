@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import heroImg from '../assets/wedding.jpg'
+import heroImg from '../assets/hero4.jpg'
 import styles from './styles.module.css'
 
 const WEDDING_DATE = new Date('2027-12-30T16:00:00')
