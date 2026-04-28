@@ -42,7 +42,7 @@ export function GalleryPage() {
   return (
     <PageLayout
       title="Gallery"
-      intro="Engagement and pre-wedding moments captured through the years."
+      intro="Take a peek into our journey together. The adventures, the milestones, and all the beautiful moments that led us here."
       className={styles.galleryLayout}
     >
       <div className={styles.filterBar}>
