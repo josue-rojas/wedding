@@ -1,0 +1,32 @@
+.tag {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.45rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tagActive {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.tagInactive {
+  background: transparent;
+  color: var(--text);
+}
+
+.tagInactive:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}

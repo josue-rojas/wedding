@@ -5,11 +5,12 @@ import styles from './styles.module.css'
 type PageLayoutProps = PropsWithChildren<{
   title: ReactNode
   intro?: ReactNode
+  className?: string
 }>
 
-export function PageLayout({ children, intro, title }: PageLayoutProps) {
+export function PageLayout({ children, className, intro, title }: PageLayoutProps) {
   return (
-    <main className={styles.pageLayout}>
+    <main className={[styles.pageLayout, className].filter(Boolean).join(' ')}>
       <header className={styles.pageLayoutHeader}>
         <h1>{title}</h1>
         <BotanicalDivider />
