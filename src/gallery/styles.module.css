@@ -1,23 +1,39 @@
-.grid {
-  display: grid;
-  gap: 0.8rem;
+.galleryLayout {
+  width: min(1100px, 100% - 2rem);
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
 .galleryGrid {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
 }
 
-.placeholderTile {
-  min-height: 130px;
-  border-radius: 2px;
-  border: 1px solid var(--border);
-  background: linear-gradient(135deg, #faf7f3, #f0ebe3);
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-family: var(--font-display);
-  font-style: italic;
-  padding: 1rem;
+.galleryCell {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--surface-hover);
 }
+
+.galleryCell:hover img {
+  transform: scale(1.04);
+}
+
+.galleryCell img {
+  transition: opacity 0.5s ease, transform 0.4s ease;
+}
+
+@media (max-width: 600px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
