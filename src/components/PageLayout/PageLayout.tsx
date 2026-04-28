@@ -1,5 +1,4 @@
 import type { PropsWithChildren, ReactNode } from 'react'
-import { BotanicalDivider } from '../BotanicalDivider/BotanicalDivider'
 import styles from './styles.module.css'
 
 type PageLayoutProps = PropsWithChildren<{
@@ -13,7 +12,6 @@ export function PageLayout({ children, className, intro, title }: PageLayoutProp
     <main className={[styles.pageLayout, className].filter(Boolean).join(' ')}>
       <header className={styles.pageLayoutHeader}>
         <h1>{title}</h1>
-        <BotanicalDivider />
         {intro ? <p className={styles.pageIntro}>{intro}</p> : null}
       </header>
       <div className={styles.pageLayoutContent}>{children}</div>

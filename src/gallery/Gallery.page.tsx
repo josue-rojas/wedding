@@ -17,6 +17,7 @@ type GalleryItem = {
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
+  { id: 'together-2022', src: hero2, year: 2021, alt: 'Together' },
   { id: 'together-2022', src: hero2, year: 2022, alt: 'Together' },
   { id: 'portrait-2022', src: hero3, year: 2022, alt: 'Portrait session' },
   { id: 'engagement-2023', src: hero, year: 2023, alt: 'Engagement session' },
