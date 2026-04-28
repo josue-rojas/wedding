@@ -13,21 +13,22 @@ type GalleryItem = {
   src: string
   alt: string
   year: number
+  id: string
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
-  { src: hero2, year: 2022, alt: 'Together' },
-  { src: hero3, year: 2022, alt: 'Portrait session' },
-  { src: hero, year: 2023, alt: 'Engagement session' },
-  { src: hero4, year: 2023, alt: 'Couple stroll' },
-  { src: wedding, year: 2023, alt: 'Venue visit' },
-  { src: hero2, year: 2024, alt: 'Family dinner' },
-  { src: hero3, year: 2024, alt: 'Brunch with friends' },
-  { src: hero4, year: 2024, alt: 'Celebration dinner' },
-  { src: hero, year: 2025, alt: 'Pre-wedding shoot' },
-  { src: wedding, year: 2025, alt: 'Wedding day' },
-  { src: hero2, year: 2025, alt: 'Getting ready' },
-  { src: hero3, year: 2025, alt: 'Reception moments' },
+  { id: 'together-2022', src: hero2, year: 2022, alt: 'Together' },
+  { id: 'portrait-2022', src: hero3, year: 2022, alt: 'Portrait session' },
+  { id: 'engagement-2023', src: hero, year: 2023, alt: 'Engagement session' },
+  { id: 'stroll-2023', src: hero4, year: 2023, alt: 'Couple stroll' },
+  { id: 'venue-2023', src: wedding, year: 2023, alt: 'Venue visit' },
+  { id: 'family-2024', src: hero2, year: 2024, alt: 'Family dinner' },
+  { id: 'brunch-2024', src: hero3, year: 2024, alt: 'Brunch with friends' },
+  { id: 'celebration-2024', src: hero4, year: 2024, alt: 'Celebration dinner' },
+  { id: 'prewedding-2025', src: hero, year: 2025, alt: 'Pre-wedding shoot' },
+  { id: 'weddingday-2025', src: wedding, year: 2025, alt: 'Wedding day' },
+  { id: 'ready-2025', src: hero2, year: 2025, alt: 'Getting ready' },
+  { id: 'reception-2025', src: hero3, year: 2025, alt: 'Reception moments' },
 ]
 
 const YEARS = [...new Set(GALLERY_ITEMS.map((item) => item.year))].sort()
@@ -56,8 +57,8 @@ export function GalleryPage() {
       </div>
 
       <div className={styles.galleryGrid}>
-        {filtered.map((item, i) => (
-          <div key={`${item.year}-${i}`} className={styles.galleryCell}>
+        {filtered.map((item) => (
+          <div key={item.id} className={styles.galleryCell}>
             <LazyImage src={item.src} alt={item.alt} />
           </div>
         ))}
