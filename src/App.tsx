@@ -13,10 +13,10 @@ import { RSVPPage } from './rsvp/RSVP.page'
 const navItems: NavigationItem[] = [
   { label: 'Home', to: '/' },
   { label: 'Our Story', to: '/our-story' },
+  { label: 'Gallery', to: '/gallery' },
   { label: 'Details', to: '/details' },
   { label: 'Registry', to: '/registry' },
   { label: 'FAQ', to: '/faq' },
-  { label: 'Gallery', to: '/gallery' },
 ]
 
 function App() {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './styles.module.css'
 
@@ -13,6 +13,25 @@ type NavigationProps = {
 
 export function Navigation({ items }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+      }
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [isOpen])
 
   return (
     <header className={styles.siteHeader}>
@@ -50,11 +69,12 @@ export function Navigation({ items }: NavigationProps) {
         <button
           aria-expanded={isOpen}
           aria-label="Toggle menu"
-          className={styles.menuButton}
+          className={`${styles.menuButton}${isOpen ? ` ${styles.isOpen}` : ''}`}
           onClick={() => setIsOpen((value) => !value)}
           type="button"
         >
-          {isOpen ? '✕' : '☰'}
+          <span className={styles.menuIconLine} />
+          <span className={styles.menuIconLine} />
         </button>
       </div>
     </header>
