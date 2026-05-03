@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import p20220213_165846 from '../assets/gallery/2022-02-13_165846.jpg'
 import p20220326_134516 from '../assets/gallery/2022-03-26_134516.jpg'
 import p20220806_162508 from '../assets/gallery/2022-08-06_162508.jpg'
@@ -100,8 +100,49 @@ const YEARS = [...new Set(GALLERY_ITEMS.map((item) => item.year))].sort()
 
 export function GalleryPage() {
   const [activeYear, setActiveYear] = useState<number | null>(null)
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null)
 
   const filtered = activeYear === null ? GALLERY_ITEMS : GALLERY_ITEMS.filter((item) => item.year === activeYear)
+  const selectedIndex = selectedItem ? filtered.findIndex((item) => item.id === selectedItem.id) : -1
+
+  const showPreviousImage = () => {
+    if (selectedIndex < 0 || filtered.length === 0) return
+    const previousIndex = (selectedIndex - 1 + filtered.length) % filtered.length
+    setSelectedItem(filtered[previousIndex])
+  }
+
+  const showNextImage = () => {
+    if (selectedIndex < 0 || filtered.length === 0) return
+    const nextIndex = (selectedIndex + 1) % filtered.length
+    setSelectedItem(filtered[nextIndex])
+  }
+
+  useEffect(() => {
+    if (!selectedItem) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedItem(null)
+        return
+      }
+
+      if (event.key === 'ArrowLeft') {
+        if (selectedIndex < 0 || filtered.length === 0) return
+        const previousIndex = (selectedIndex - 1 + filtered.length) % filtered.length
+        setSelectedItem(filtered[previousIndex])
+        return
+      }
+
+      if (event.key === 'ArrowRight') {
+        if (selectedIndex < 0 || filtered.length === 0) return
+        const nextIndex = (selectedIndex + 1) % filtered.length
+        setSelectedItem(filtered[nextIndex])
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [selectedItem, selectedIndex, filtered])
 
   return (
     <PageLayout
@@ -124,10 +165,59 @@ export function GalleryPage() {
       <div className={styles.galleryGrid}>
         {filtered.map((item) => (
           <div key={item.id} className={styles.galleryCell}>
-            <LazyImage src={item.src} alt={item.alt} />
+            <button
+              type="button"
+              className={styles.imageButton}
+              onClick={() => setSelectedItem(item)}
+              aria-label={`Open ${item.alt}`}
+            >
+              <LazyImage src={item.src} alt={item.alt} />
+            </button>
           </div>
         ))}
       </div>
+
+      {selectedItem && (
+        <div
+          className={styles.lightboxOverlay}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedItem.alt}
+          onClick={() => setSelectedItem(null)}
+        >
+          <button
+            type="button"
+            className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
+            onClick={(event) => {
+              event.stopPropagation()
+              showPreviousImage()
+            }}
+            aria-label="Show previous image"
+          >
+            <svg className={styles.lightboxNavIcon} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M14.5 5.5L8 12l6.5 6.5" />
+            </svg>
+          </button>
+
+          <div className={styles.lightboxContent} onClick={(event) => event.stopPropagation()}>
+            <img className={styles.lightboxImage} src={selectedItem.src} alt={selectedItem.alt} />
+          </div>
+
+          <button
+            type="button"
+            className={`${styles.lightboxNav} ${styles.lightboxNext}`}
+            onClick={(event) => {
+              event.stopPropagation()
+              showNextImage()
+            }}
+            aria-label="Show next image"
+          >
+            <svg className={styles.lightboxNavIcon} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9.5 5.5L16 12l-6.5 6.5" />
+            </svg>
+          </button>
+        </div>
+      )}
     </PageLayout>
   )
 }

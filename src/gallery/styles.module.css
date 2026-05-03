@@ -24,6 +24,13 @@
   overflow: hidden;
 }
 
+.imageButton {
+  all: unset;
+  cursor: zoom-in;
+  display: block;
+  width: 100%;
+}
+
 .galleryCell:hover img {
   transform: scale(1.04);
 }
@@ -36,9 +43,99 @@
   transition: opacity 0.5s ease, transform 0.4s ease;
 }
 
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(12, 10, 8, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+}
+
+.lightboxImage {
+  display: block;
+  max-width: 92vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.lightboxNav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.48);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 2rem;
+  line-height: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightboxNavIcon {
+  width: 1.4rem;
+  height: 1.4rem;
+  display: block;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lightboxNav:hover {
+  background: rgba(0, 0, 0, 0.68);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.lightboxPrev {
+  left: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.lightboxNext {
+  right: clamp(0.5rem, 2vw, 1.5rem);
+}
+
 @media (max-width: 600px) {
   .galleryGrid {
     column-width: 150px;
+  }
+
+  .lightboxNav {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .lightboxNavIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .lightboxPrev {
+    left: 0.35rem;
+  }
+
+  .lightboxNext {
+    right: 0.35rem;
   }
 }
 
