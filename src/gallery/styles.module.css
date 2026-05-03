@@ -11,16 +11,17 @@
 }
 
 .galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0.75rem;
+  column-width: 220px;
+  column-gap: 0.75rem;
 }
 
 .galleryCell {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 0.75rem;
+  break-inside: avoid;
   border-radius: 4px;
-  background: var(--surface-hover);
+  overflow: hidden;
 }
 
 .galleryCell:hover img {
@@ -28,12 +29,16 @@
 }
 
 .galleryCell img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
   transition: opacity 0.5s ease, transform 0.4s ease;
 }
 
 @media (max-width: 600px) {
   .galleryGrid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    column-width: 150px;
   }
 }
 
