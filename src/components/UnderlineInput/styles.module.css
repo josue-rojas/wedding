@@ -28,3 +28,9 @@
   border-color: var(--heading);
   color: var(--heading);
 }
+
+@media (max-width: 768px) {
+  .underlineInput {
+    font-size: 16px;
+  }
+}
