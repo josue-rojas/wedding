@@ -119,13 +119,3 @@
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-
-.buttonLinkPrimary {
-  composes: button from '../components/Button/styles.module.css';
-  composes: primary from '../components/Button/styles.module.css';
-}
-
-.buttonLinkSecondary {
-  composes: button from '../components/Button/styles.module.css';
-  composes: secondary from '../components/Button/styles.module.css';
-}

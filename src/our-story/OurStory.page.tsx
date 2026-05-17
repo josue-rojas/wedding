@@ -68,7 +68,7 @@ export function OurStoryPage() {
         />
 
         <div className={styles.ctaRow}>
-          <Button onClick={() => navigate('/rsvp')}>Join the Celebration</Button>
+          <Button onClick={() => navigate('/rsvp')}>RSVP</Button>
         </div>
       </div>
     </PageLayout>

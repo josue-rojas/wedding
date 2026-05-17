@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { LinkButton } from '../Button/LinkButton'
 import styles from './styles.module.css'
 
 export type NavigationItem = {
@@ -56,15 +57,9 @@ export function Navigation({ items }: NavigationProps) {
           ))}
         </nav>
 
-        <NavLink
-          className={({ isActive }) =>
-            `${styles.navCta}${isActive ? ` ${styles.navCtaActive}` : ''}`
-          }
-          to="/rsvp"
-          onClick={() => setIsOpen(false)}
-        >
+        <LinkButton to="/rsvp" onClick={() => setIsOpen(false)}>
           RSVP
-        </NavLink>
+        </LinkButton>
 
         <button
           aria-expanded={isOpen}

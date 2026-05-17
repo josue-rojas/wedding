@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, PropsWithChildren } from 'react'
 import styles from './styles.module.css'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline'
+export type ButtonVariant = 'primary' | 'secondary' | 'outline'
 
 type ButtonProps = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> & {
   variant?: ButtonVariant

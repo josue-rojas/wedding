@@ -1,4 +1,4 @@
-import styles from './styles.module.css'
+import { Button } from '../Button/Button'
 
 type GalleryFilterTagProps = {
   label: string
@@ -8,13 +8,13 @@ type GalleryFilterTagProps = {
 
 export function GalleryFilterTag({ label, active, onClick }: GalleryFilterTagProps) {
   return (
-    <button
+    <Button
       type="button"
-      className={[styles.tag, active ? styles.tagActive : styles.tagInactive].join(' ')}
+      variant={active ? 'primary' : 'secondary'}
       onClick={onClick}
       aria-pressed={active}
     >
       {label}
-    </button>
+    </Button>
   )
 }

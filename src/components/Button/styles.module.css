@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: 16px;
   padding: 0.6rem 2rem;
   font-family: var(--font-sans);
   font-size: 0.68rem;

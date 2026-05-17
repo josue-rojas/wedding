@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { LinkButton } from '../components/Button/LinkButton'
 import heroImg from '../assets/hero4.jpg'
 import styles from './styles.module.css'
 
@@ -85,12 +85,12 @@ export function HomePage() {
           </div>
         )}
         <div className={styles.buttonRow}>
-          <Link className={styles.buttonLinkPrimary} to="/rsvp">
+          <LinkButton to="/rsvp">
             RSVP
-          </Link>
-          <Link className={styles.buttonLinkSecondary} to="/our-story">
+          </LinkButton>
+          <LinkButton to="/our-story" variant="secondary">
             Our Story
-          </Link>
+          </LinkButton>
         </div>
       </section>
     </main>
